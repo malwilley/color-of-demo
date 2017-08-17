@@ -1,14 +1,16 @@
 <template>
-  <div id="app">
+  <div id="app" class="flex flex-column justify-start items-stretch">
     <header-bar />
-    <accordion-menu />
+    <div class="body-container flex flex-auto">
+      <menu-api />
+    </div>
   </div>
 </template>
 
 <script>
 import Hello from './components/Hello';
 import HeaderBar from './components/HeaderBar';
-import AccordionMenu from './components/AccordionMenu';
+import MenuApi from './components/MenuApi';
 
 
 export default {
@@ -16,7 +18,7 @@ export default {
   components: {
     Hello,
     HeaderBar,
-    AccordionMenu,
+    MenuApi,
   },
 };
 </script>
@@ -31,4 +33,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
 }
+
 </style>

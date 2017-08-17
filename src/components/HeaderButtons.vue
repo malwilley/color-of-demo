@@ -1,7 +1,7 @@
 <template>
     <ul class="list-reset flex">
-          <li class="btn p1">api</li>
-          <li class="btn p1">color type</li>
+          <li class="selected btn p1">api</li>
+          <li class="btn p1">palette</li>
           <li class="btn p1">github</li>
         </ul>
 </template>
@@ -16,5 +16,7 @@ export default {
 </script>
 
 <style scoped>
-
+  .selected {
+    border-bottom: 4px solid #001f3f;
+  }
 </style>
