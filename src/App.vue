@@ -1,18 +1,22 @@
 <template>
   <div id="app">
-    <header-bar/>
+    <header-bar />
+    <accordion-menu />
   </div>
 </template>
 
 <script>
 import Hello from './components/Hello';
 import HeaderBar from './components/HeaderBar';
+import AccordionMenu from './components/AccordionMenu';
+
 
 export default {
   name: 'app',
   components: {
     Hello,
     HeaderBar,
+    AccordionMenu,
   },
 };
 </script>
