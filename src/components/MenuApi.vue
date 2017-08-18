@@ -1,7 +1,9 @@
 <template>
-  <div class="flex justify-center items-center">
-    api content
-  </div>
+  <form>
+    <label for="apiKey">api key</label><br />
+    <input type="text" name="apiKey" /><br />
+    <input type="submit" value="save" />
+  </form>
 </template>
 
 <script>
