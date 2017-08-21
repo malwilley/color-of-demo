@@ -1,16 +1,28 @@
 <template>
-  <form>
+  <div>
     <label for="apiKey">api key</label><br />
-    <input type="text" name="apiKey" /><br />
-    <input type="submit" value="save" />
-  </form>
+    <input type="text" name="apiKey" v-model="apiKey" /><br />
+    <button v-on:click="save()">save</button>
+    <p>{{response}}</p>
+  </div>
 </template>
 
 <script>
+import { validateSubscriptionKey } from '../common/bing';
+
 export default {
   name: 'menu-api',
-  data() {
-    return {};
+  data: () => ({
+    apiKey: '',
+    response: '',
+  }),
+  methods: {
+    async save() {
+      // start spinner (this.saveState = Fetching)
+      const valid = await validateSubscriptionKey(this.apiKey);
+      // this.saveState = valid ? Valid : Invalid
+      this.response = valid ? 'success' : 'failure';
+    },
   },
 };
 </script>
