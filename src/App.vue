@@ -2,7 +2,7 @@
   <div id="app" class="flex flex-column justify-start items-stretch ">
     <header-bar />
     <div class="body-container flex flex-column items-center flex-auto px2">
-      <menu-api />
+      <menu-palette />
     </div>
   </div>
 </template>
@@ -11,6 +11,7 @@
 import Hello from './components/Hello';
 import HeaderBar from './components/HeaderBar';
 import MenuApi from './components/MenuApi';
+import MenuPalette from './components/MenuPalette';
 
 
 export default {
@@ -19,6 +20,7 @@ export default {
     Hello,
     HeaderBar,
     MenuApi,
+    MenuPalette,
   },
 };
 </script>
