@@ -1,8 +1,10 @@
 <template>
-  <div id="app" class="flex flex-column justify-start items-stretch ">
-    <header-bar />
-    <div class="body-container flex flex-column items-center flex-auto px2">
-      <menu-palette />
+  <div class="flex flex-column items-center">
+    <div id="app" class="flex flex-column justify-start items-stretch ">
+      <header-bar />
+      <div class="body-container flex flex-column items-stretch flex-auto px2">
+        <menu-palette />
+      </div>
     </div>
   </div>
 </template>
@@ -34,6 +36,8 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
+  width: 100%;
+  max-width: 1200px;
 }
 
 </style>
