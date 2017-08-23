@@ -1,7 +1,7 @@
 <template>
-  <ul class="flex-auto flex flex-column items-stretch">
-    <li v-for="color in colors" v-bind:key="color" class="p2 list-reset" v-bind:style="{ background: color }">
-      {{ color }}
+  <ul class="flex-auto flex flex-column items-stretch list-reset">
+    <li v-for="color in colors" v-bind:key="color" class="p2" v-bind:style="{ background: color }">
+      {{ color.toUpperCase() }}
     </li>
   </ul>
 </template>
@@ -11,7 +11,7 @@ export default {
   name: 'menu-palette',
   data: () => ({
     colors: [
-      '#ffffff',
+      '#DDDDDD',
       '#000000',
       '#6f3292',
       '#5d9921',
