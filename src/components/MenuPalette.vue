@@ -9,15 +9,11 @@
 <script>
 export default {
   name: 'menu-palette',
-  data: () => ({
-    colors: [
-      '#DDDDDD',
-      '#000000',
-      '#6f3292',
-      '#5d9921',
-      '#140345',
-    ],
-  }),
+  computed: {
+    colors() {
+      return this.$store.state.palette.colors;
+    },
+  },
   methods: {
   },
 };

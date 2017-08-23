@@ -1,7 +1,10 @@
 <template>
   <ul class="list-reset flex">
-    <li v-for="button in buttons" v-bind:key="button.name" class="btn p1" v-bind:class="{selected: button.selected}">
-      <a v-bind:href="button.link" v-bind:target="{'_blank': button.external}">{{ button.name }}</a>
+    <li v-for="button in pageButtons" v-bind:key="button.name" class="btn p1" v-bind:class="{selected: button.selected}">
+      <a v-bind:href="button.url">{{ button.name }}</a>
+    </li>
+    <li v-for="button in linkButtons" v-bind:key="button.name" class="btn p1">
+      <a v-bind:href="button.link" target="_blank">{{ button.name }}</a>
     </li>
   </ul>
 </template>
@@ -11,23 +14,19 @@ export default {
   name: 'header-buttons',
   data() {
     return {
-      buttons: [
-        {
-          name: 'api',
-          selected: true,
-        },
-        {
-          name: 'palette',
-          selected: false,
-        },
+      linkButtons: [
         {
           name: 'github',
-          selected: false,
           link: 'https://github.com/malwilley/color-of-demo',
           external: true,
         },
       ],
     };
+  },
+  computed: {
+    pageButtons() {
+      return this.$store.state.pages;
+    },
   },
 };
 </script>

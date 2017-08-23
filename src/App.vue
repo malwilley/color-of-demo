@@ -10,7 +10,6 @@
 </template>
 
 <script>
-import Hello from './components/Hello';
 import HeaderBar from './components/HeaderBar';
 import MenuApi from './components/MenuApi';
 import MenuPalette from './components/MenuPalette';
@@ -19,7 +18,6 @@ import MenuPalette from './components/MenuPalette';
 export default {
   name: 'app',
   components: {
-    Hello,
     HeaderBar,
     MenuApi,
     MenuPalette,

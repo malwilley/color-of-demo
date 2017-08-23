@@ -13,9 +13,13 @@ import { validateSubscriptionKey } from '../common/bing';
 export default {
   name: 'menu-api',
   data: () => ({
-    apiKey: '',
     response: '',
   }),
+  computed: {
+    apiKey() {
+      return this.$store.state.api.bing.apiKey;
+    },
+  },
   methods: {
     async save() {
       // start spinner (this.saveState = Fetching)
