@@ -1,7 +1,7 @@
 <template>
   <ul class="list-reset flex">
     <li v-for="button in pageButtons" v-bind:key="button.name" class="btn p1 mx1" v-bind:class="{selected: button.selected}">
-      <a v-bind:href="button.url">{{ button.name }}</a>
+      <router-link v-bind:to="button.url">{{ button.name }}</router-link>
     </li>
     <li v-for="button in linkButtons" v-bind:key="button.name" class="btn p1 mx1">
       <a v-bind:href="button.link" target="_blank">{{ button.name }}</a>

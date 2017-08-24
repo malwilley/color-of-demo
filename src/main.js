@@ -2,12 +2,14 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue';
 import Vuex from 'vuex';
+import VueRouter from 'vue-router';
 import App from './App';
+import router from './router';
 
 Vue.config.productionTip = false;
 
-// Necessary to add vuex properties to the Vue object
 Vue.use(Vuex);
+Vue.use(VueRouter);
 
 const store = new Vuex.Store({
   state: {
@@ -15,17 +17,17 @@ const store = new Vuex.Store({
       {
         name: 'search',
         selected: true,
-        url: '',
+        url: '/search',
       },
       {
         name: 'api',
         selected: false,
-        url: '',
+        url: '/api',
       },
       {
         name: 'palette',
         selected: false,
-        url: '',
+        url: '/palette',
       },
     ],
     api: {
@@ -56,6 +58,7 @@ const store = new Vuex.Store({
 new Vue({
   el: '#app',
   store,
+  router,
   template: '<App/>',
   components: { App },
 });

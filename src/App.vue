@@ -3,7 +3,7 @@
     <div id="app" class="flex flex-column justify-start items-stretch ">
       <header-bar />
       <div class="body-container flex flex-column items-stretch flex-auto px2">
-        <menu-palette />
+        <router-view />
       </div>
     </div>
   </div>
