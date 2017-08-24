@@ -37,4 +37,8 @@ export default {
   max-width: 1200px;
 }
 
+.btn {
+  cursor: pointer;
+}
+
 </style>
