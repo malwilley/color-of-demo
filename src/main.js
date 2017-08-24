@@ -17,7 +17,7 @@ const store = new Vuex.Store({
       {
         name: 'search',
         selected: true,
-        url: '/search',
+        url: '/',
       },
       {
         name: 'api',
@@ -52,6 +52,13 @@ const store = new Vuex.Store({
   getters: {
     apiIsValid: state => state.api.providers[state.api.selectedProvider].valid,
   },
+  /* eslint-disable no-param-reassign */
+  mutations: {
+    updateBingApiKey(state, apiKey) {
+      state.api.providers.bing.apiKey = apiKey;
+    },
+  },
+  /* eslint-enable no-param-reassign */
 });
 
 /* eslint-disable no-new */
