@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-column items-center">
+  <div class="flex flex-column items-center" :style="{ [background-color]: currentColor }">
     <div id="app" class="flex flex-column justify-start items-stretch ">
       <header-bar />
       <div class="body-container flex flex-column items-stretch flex-auto px2">
@@ -11,6 +11,7 @@
 
 <script>
 import HeaderBar from './components/HeaderBar';
+import Search from './components/Search';
 import MenuApi from './components/MenuApi';
 import MenuPalette from './components/MenuPalette';
 
@@ -18,8 +19,14 @@ export default {
   name: 'app',
   components: {
     HeaderBar,
+    Search,
     MenuApi,
     MenuPalette,
+  },
+  computed: {
+    currentColor() {
+      return this.$store.state.search.color;
+    },
   },
 };
 </script>
