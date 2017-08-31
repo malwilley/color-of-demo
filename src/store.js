@@ -54,19 +54,22 @@ export default new Vuex.Store({
     updateBingApiKey(state, apiKey) {
       state.api.providers.bing.apiKey = apiKey;
     },
-    setSearchTermColor(state, term, color) {
-      state.api.search.term = term;
-      state.api.search.color = color;
+    setSearchTerm(state, term) {
+      state.search.term = term;
+    },
+    setColor(state, color) {
+      state.search.color = color;
     },
   },
   /* eslint-enable no-param-reassign */
   actions: {
     async colorize({ commit, state }, query) {
       const options = {
-        apiKey: state.api.providers.bing.apiKey,
+        bingApiKey: state.api.providers.bing.apiKey,
       };
       const color = await colorOf(query, options);
-      commit('setSearchTermColor', query, color.hex());
+      commit('setSearchTerm', query);
+      commit('setColor', color.hex());
     },
   },
 });
