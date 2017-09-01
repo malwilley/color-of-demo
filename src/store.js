@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import colorOf from 'color-of';
+import createPersistedState from 'vuex-persistedstate';
 
 Vue.use(Vuex);
 
@@ -34,6 +35,11 @@ export default new Vuex.Store({
           apiKey: '',
           valid: false,
         },
+        google: {
+          cseId: '',
+          apiKey: '',
+          valid: false,
+        },
       },
     },
     palette: {
@@ -51,6 +57,9 @@ export default new Vuex.Store({
   },
   /* eslint-disable no-param-reassign */
   mutations: {
+    setSelectedProvider(state, provider) {
+      state.api.selectedProvider = provider;
+    },
     updateBingApiKey(state, apiKey) {
       state.api.providers.bing.apiKey = apiKey;
     },
@@ -63,6 +72,9 @@ export default new Vuex.Store({
   },
   /* eslint-enable no-param-reassign */
   actions: {
+    setSelectedProvider({ commit }, provider) {
+      commit('setSelectedProvider', provider);
+    },
     async colorize({ commit, state }, query) {
       const options = {
         bingApiKey: state.api.providers.bing.apiKey,
@@ -72,4 +84,8 @@ export default new Vuex.Store({
       commit('setColor', color.hex());
     },
   },
+  plugins: [
+    createPersistedState({
+    }),
+  ],
 });
