@@ -1,7 +1,9 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import colorOf from 'color-of';
 import createPersistedState from 'vuex-persistedstate';
+import { bingColorOf } from '@/common/bing';
+import googleColorOf from '@/common/google';
+import R from 'ramda';
 
 Vue.use(Vuex);
 
@@ -60,8 +62,14 @@ export default new Vuex.Store({
     setSelectedProvider(state, provider) {
       state.api.selectedProvider = provider;
     },
-    updateBingApiKey(state, apiKey) {
+    setBingApiKey(state, apiKey) {
       state.api.providers.bing.apiKey = apiKey;
+    },
+    setGoogleCseId(state, cseId) {
+      state.api.providers.google.cseId = cseId;
+    },
+    setGoogleApiKey(state, apiKey) {
+      state.api.providers.google.apiKey = apiKey;
     },
     setSearchTerm(state, term) {
       state.search.term = term;
@@ -75,11 +83,20 @@ export default new Vuex.Store({
     setSelectedProvider({ commit }, provider) {
       commit('setSelectedProvider', provider);
     },
+    setBingApiKey({ commit }, apiKey) {
+      commit('setBingApiKey', apiKey);
+    },
+    setGoogleCseId({ commit }, cseId) {
+      commit('setGoogleCseId', cseId);
+    },
+    setGoogleApiKey({ commit }, apiKey) {
+      commit('setGoogleApiKey', apiKey);
+    },
     async colorize({ commit, state }, query) {
-      const options = {
-        bingApiKey: state.api.providers.bing.apiKey,
-      };
-      const color = await colorOf(query, options);
+      const colorOf = state.api.selectedProvider === 'bing' ?
+        R.curry(bingColorOf)(state.api.providers.bing.apiKey) :
+        R.curry(googleColorOf)(state.api.providers.google.cseId, state.api.providers.google.apiKey);
+      const color = await colorOf(query);
       commit('setSearchTerm', query);
       commit('setColor', color.hex());
     },

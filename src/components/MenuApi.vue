@@ -20,6 +20,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 import { validateSubscriptionKey } from '@/common/bing';
 
 export default {
@@ -52,6 +53,11 @@ export default {
     },
   },
   methods: {
+    ...mapActions([
+      'setBingApiKey',
+      'setGoogleCseId',
+      'setGoogleApiKey',
+    ]),
     selectProvider(provider) {
       this.$store.commit('setSelectedProvider', provider);
     },
@@ -60,12 +66,24 @@ export default {
     },
     async save() {
       // start spinner (this.saveState = Fetching)
-      const valid = await validateSubscriptionKey(this.bing.apiKey);
+      const valid = await this.isSelected('bing') ?
+        validateSubscriptionKey(this.bing.apiKey) :
+        true;
       // this.saveState = valid ? Valid : Invalid
       this.response = valid ? 'success' : 'failure';
 
       if (valid) {
-        this.$store.commit('updateBingApiKey', this.bing.apiKey);
+        switch (this.selectedProvider) {
+          case 'bing':
+            this.setBingApiKey(this.bing.apiKey);
+            break;
+          case 'google':
+            this.setGoogleCseId(this.google.cseId);
+            this.setGoogleApiKey(this.google.apiKey);
+            break;
+          default:
+            throw new Error('Selected provider must be google or bing');
+        }
       }
     },
   },

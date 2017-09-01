@@ -1,3 +1,5 @@
+import colorOf from 'color-of';
+
 function createHeaders(key) {
   const headers = new Headers();
   headers.append('Host', 'api.cognitive.microsoft.com');
@@ -24,6 +26,12 @@ export async function validateSubscriptionKey(key) {
   }
 }
 
-export function otherFunc() {
-  return {};
+export function colorize(apiKey, query) {
+  const options = {
+    query,
+    bingApiKey: apiKey,
+    numResults: 50,
+    palette: 'css',
+  };
+  return colorOf(query, options);
 }
