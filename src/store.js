@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import createPersistedState from 'vuex-persistedstate';
-import { bingColorOf } from '@/common/bing';
+import { colorize as bingColorOf } from '@/common/bing';
 import googleColorOf from '@/common/google';
 import R from 'ramda';
 
@@ -103,6 +103,10 @@ export default new Vuex.Store({
   },
   plugins: [
     createPersistedState({
+      paths: [
+        'api',
+        'palette',
+      ],
     }),
   ],
 });

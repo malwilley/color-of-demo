@@ -27,6 +27,8 @@ export default {
   name: 'menu-api',
   mounted() {
     this.bing.apiKey = this.apiKey;
+    this.google.cseId = this.googleCseId;
+    this.google.apiKey = this.googleApiKey;
   },
   data: () => ({
     bing: {
