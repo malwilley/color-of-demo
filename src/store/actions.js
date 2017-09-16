@@ -1,0 +1,25 @@
+import curry from 'ramda/src/curry';
+import { colorize as bingColorOf } from '@/common/bing';
+import googleColorOf from '@/common/google';
+import * as types from './mutation-types';
+
+export const setSelectedProvider = ({ commit }, provider) => {
+  commit(types.SET_SELECTED_PROVIDER, provider);
+};
+
+export const setBingCredentials = ({ commit }, credentials) => {
+  commit(types.SET_BING_CREDENTIALS, credentials);
+};
+
+export const setGoogleCredentials = ({ commit }, credentials) => {
+  commit(types.SET_GOOGLE_CREDENTIALS, credentials);
+};
+
+export const colorize = async ({ commit, state }, query) => {
+  const colorOf = state.api.selectedProvider === 'bing' ?
+    curry(bingColorOf)(state.api.providers.bing.apiKey) :
+    curry(googleColorOf)(state.api.providers.google.cseId, state.api.providers.google.apiKey);
+  const color = await colorOf(query);
+  commit(types.SET_SEARCH_TERM, query);
+  commit(types.SET_APP_COLOR, color.hex());
+};

@@ -6,20 +6,20 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
   name: 'search',
   mounted() {
-    this.searchQuery = this.currentTerm;
+    this.searchQuery = this.currentSearchTerm;
   },
   data: () => ({
     searchQuery: '',
   }),
   computed: {
-    currentTerm() {
-      return this.$store.state.search.term;
-    },
+    ...mapGetters([
+      'currentSearchTerm',
+    ]),
   },
   methods: {
     ...mapActions([

@@ -56,13 +56,10 @@ export default {
   },
   methods: {
     ...mapActions([
-      'setBingApiKey',
-      'setGoogleCseId',
-      'setGoogleApiKey',
+      'setBingCredentials',
+      'setGoogleCredentials',
+      'setSelectedProvider',
     ]),
-    selectProvider(provider) {
-      this.$store.commit('setSelectedProvider', provider);
-    },
     isSelected(provider) {
       return this.selectedProvider === provider;
     },
@@ -77,11 +74,10 @@ export default {
       if (valid) {
         switch (this.selectedProvider) {
           case 'bing':
-            this.setBingApiKey(this.bing.apiKey);
+            this.setBingApiKey({ apiKey: this.bing.apiKey });
             break;
           case 'google':
-            this.setGoogleCseId(this.google.cseId);
-            this.setGoogleApiKey(this.google.apiKey);
+            this.setGoogleCredentials({ apiKey: this.google.apiKey, cseId: this.google.cseId });
             break;
           default:
             throw new Error('Selected provider must be google or bing');
