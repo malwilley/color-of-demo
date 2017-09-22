@@ -10,6 +10,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import HeaderBar from './components/HeaderBar';
 import Search from './components/Search';
 import MenuApi from './components/MenuApi';
@@ -24,9 +25,9 @@ export default {
     MenuPalette,
   },
   computed: {
-    currentColor() {
-      return this.$store.state.search.color;
-    },
+    ...mapGetters([
+      'currentColor',
+    ]),
   },
 };
 </script>
