@@ -11,26 +11,9 @@ export default new Vuex.Store({
   state: {
     colors: {
       primary: '#FFFFFF',
-      secondary: '#EEEEEE',
-      tertiary: '#DDDDDD',
+      secondary: '#FF0000',
+      tertiary: '#000000',
     },
-    pages: [
-      {
-        name: 'search',
-        selected: true,
-        url: '/',
-      },
-      {
-        name: 'api',
-        selected: false,
-        url: '/api',
-      },
-      {
-        name: 'palette',
-        selected: false,
-        url: '/palette',
-      },
-    ],
     search: {
       term: '',
     },

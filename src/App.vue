@@ -1,5 +1,7 @@
 <template>
-  <div class="flex flex-auto flex-column items-center" :style="{ 'background-color': currentColor }">
+  <div 
+    class="flex flex-auto flex-column items-center" 
+    :style="{ 'background-color': currentBackgroundColor, 'color': currentTextColor, 'border-color': currentTextColor }">
     <div id="app" class="flex flex-column justify-start items-stretch ">
       <header-bar />
       <div class="body-container flex flex-column items-stretch flex-auto px2">
@@ -26,7 +28,8 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'currentColor',
+      'currentBackgroundColor',
+      'currentTextColor',
     ]),
   },
 };
@@ -49,13 +52,21 @@ body {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
   width: 100%;
   max-width: 1200px;
 }
 
 .btn {
   cursor: pointer;
+}
+
+.thick-underline {
+  border-bottom-width: 4px;
+  border-bottom-style: solid;
+}
+
+a:visited {
+  color: inherit;
 }
 
 </style>

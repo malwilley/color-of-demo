@@ -12,6 +12,20 @@ export default {
   name: 'header-buttons',
   data() {
     return {
+      pageButtons: [
+        {
+          name: 'search',
+          url: '/',
+        },
+        {
+          name: 'api',
+          url: '/api',
+        },
+        {
+          name: 'palette',
+          url: '/palette',
+        },
+      ],
       linkButtons: [
         {
           name: 'github',
@@ -21,21 +35,16 @@ export default {
       ],
     };
   },
-  computed: {
-    pageButtons() {
-      return this.$store.state.pages;
-    },
-  },
 };
 </script>
 
 <style scoped>
   .link { 
     text-decoration: unset; 
-    color: #001f3f;
   }
 
   .router-link-active {
-    border-bottom: 4px solid #001f3f;
+    border-bottom-width: 4px;
+    border-bottom-style: solid; 
   }
 </style>

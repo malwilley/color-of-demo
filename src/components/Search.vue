@@ -1,6 +1,6 @@
 <template>
   <section class="flex flex-column justify-center items-center">
-    <input type="text" v-model="searchQuery" />
+    <input class="thick-underline p2 m2 h2" type="text" v-model="searchQuery" />
     <button @click="colorize(searchQuery)">colorize</button>
   </section>
 </template>
@@ -30,5 +30,10 @@ export default {
 </script>
 
 <style scoped>
-
+input {
+  background: none;
+  border-left: none;
+  border-top: none;
+  border-right: none;
+}
 </style>
