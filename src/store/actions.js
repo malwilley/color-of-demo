@@ -1,6 +1,7 @@
 import curry from 'ramda/src/curry';
 import { colorize as bingColorOf } from '@/common/bing';
 import googleColorOf from '@/common/google';
+// import Please from 'pleasejs';
 import * as types from './mutation-types';
 
 export const setSelectedProvider = ({ commit }, provider) => {
