@@ -4,7 +4,7 @@ import * as types from './mutation-types';
 
 export default {
   [types.SET_APP_COLOR]: (state, color) => {
-    state.search.color = color;
+    state.colors.primary = color;
   },
   [types.SET_SEARCH_TERM]: (state, term) => {
     state.search.term = term;

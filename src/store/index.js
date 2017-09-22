@@ -9,6 +9,11 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    colors: {
+      primary: '#FFFFFF',
+      secondary: '#EEEEEE',
+      tertiary: '#DDDDDD',
+    },
     pages: [
       {
         name: 'search',
@@ -28,7 +33,6 @@ export default new Vuex.Store({
     ],
     search: {
       term: '',
-      color: '#ffffff',
     },
     api: {
       selectedProvider: 'bing',
