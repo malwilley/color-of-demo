@@ -1,5 +1,6 @@
 <template>
   <div 
+    id="background"
     class="flex flex-auto flex-column items-center" 
     :style="{ 'background-color': currentBackgroundColor, 'color': currentTextColor, 'border-color': currentTextColor }">
     <div id="app" class="flex flex-column flex-auto justify-start items-stretch">
@@ -46,6 +47,10 @@ body {
   display: flex;
   justify-content: center;
   align-items: stretch;
+}
+
+#background {
+  transition: background-color 300ms ease-out;
 }
 
 #app {

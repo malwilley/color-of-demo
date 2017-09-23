@@ -6,6 +6,12 @@ export default {
   [types.SET_APP_COLOR]: (state, color) => {
     state.colors.primary = color;
   },
+  [types.SET_SECONDARY_COLOR]: (state, color) => {
+    state.colors.secondary = color;
+  },
+  [types.SET_TERTIARY_COLOR]: (state, color) => {
+    state.colors.tertiary = color;
+  },
   [types.SET_SEARCH_TERM]: (state, term) => {
     state.search.term = term;
   },
