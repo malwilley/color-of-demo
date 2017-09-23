@@ -2,7 +2,7 @@
   <div 
     class="flex flex-auto flex-column items-center" 
     :style="{ 'background-color': currentBackgroundColor, 'color': currentTextColor, 'border-color': currentTextColor }">
-    <div id="app" class="flex flex-column justify-start items-stretch ">
+    <div id="app" class="flex flex-column flex-auto justify-start items-stretch">
       <header-bar />
       <div class="body-container flex flex-column items-stretch flex-auto px2">
         <router-view />

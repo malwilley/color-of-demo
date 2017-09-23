@@ -1,6 +1,12 @@
 <template>
-  <section class="flex flex-column justify-center items-center">
-    <input class="thick-underline p2 m2 h2" type="text" v-model="searchQuery" />
+  <section class="flex flex-auto flex-column justify-center items-center">
+    <input
+      contenteditable="true" 
+      class="thick-underline center p2 m2 h2" 
+      :style="{ 'border-color': currentTextColor, 'color': currentTextColor }"
+      type="text" 
+      v-model="searchQuery"
+     />
     <button @click="colorize(searchQuery)">colorize</button>
   </section>
 </template>
@@ -19,6 +25,7 @@ export default {
   computed: {
     ...mapGetters([
       'currentSearchTerm',
+      'currentTextColor',
     ]),
   },
   methods: {
@@ -35,5 +42,12 @@ input {
   border-left: none;
   border-top: none;
   border-right: none;
+  width: auto;
+  box-shadow: none;
+  background-color: none;
+  background-image:none;
+}
+input:focus {
+  outline: 0;
 }
 </style>
