@@ -1,5 +1,5 @@
 <template>
-    <header class="flex justify-between items-center bg-black">
+    <header class="flex flex-none justify-between items-center bg-black">
         <h1 class="pl2">color-of</h1>
         <header-buttons />
     </header>

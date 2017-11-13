@@ -16,7 +16,7 @@
   "dependencies": {
     "basscss": "^8.0.3",
     "color": "^2.0.0",
-    "color-of": "^0.3.0",
+    "color-of": "^0.3.2",
     "normalize.css": "^7.0.0",
     "pleasejs": "^0.4.2",
     "ramda": "^0.24.1",

@@ -3,11 +3,9 @@
     id="background"
     class="flex flex-auto flex-column items-center" 
     :style="{ 'background-color': currentBackgroundColor, 'color': currentTextColor, 'border-color': currentTextColor }">
-    <div id="app" class="flex flex-column flex-auto justify-start items-stretch">
+    <div id="app" class="flex flex-column flex-auto">
       <header-bar />
-      <div class="body-container flex flex-column items-stretch flex-auto px2">
-        <router-view />
-      </div>
+      <router-view />
     </div>
   </div>
 </template>
@@ -51,6 +49,7 @@ body {
 
 #background {
   transition: background-color 300ms ease-out;
+  overflow: auto;
 }
 
 #app {

@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import createPersistedState from 'vuex-persistedstate';
+import { getDefaultPalettes } from '@/common/colors';
 import * as actions from './actions';
 import * as getters from './getters';
 import mutations from './mutations';
@@ -32,13 +33,7 @@ export default new Vuex.Store({
       },
     },
     palette: {
-      colors: [
-        '#DDDDDD',
-        '#000000',
-        '#6f3292',
-        '#5d9921',
-        '#140345',
-      ],
+      colors: getDefaultPalettes()[0],
     },
   },
   getters,
@@ -48,7 +43,7 @@ export default new Vuex.Store({
     createPersistedState({
       paths: [
         'api',
-        'palette',
+        // 'palette',
       ],
     }),
   ],
