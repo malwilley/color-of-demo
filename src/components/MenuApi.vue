@@ -1,18 +1,26 @@
 <template>
   <div>
     <div class="flex">
-      <button @click="selectProvider('bing')" :class="{ selected: isSelected('bing') }">bing</button>
-      <button @click="selectProvider('google')" :class="{ selected: isSelected('google') }" >google</button>
+      <button 
+        @click="setSelectedProvider('bing')" 
+        :class="{ 'color': currentTextColor, 'background-color': isSelected('bing') ? currentBackgroundColor : 'none'  }">
+        bing
+      </button>
+      <button
+        @click="setSelectedProvider('google')" 
+        :style="{ 'color': currentTextColor, 'background-color': isSelected('google') ? currentBackgroundColor : 'none' }" >
+        google
+      </button>
     </div>
     <div class="flex flex-column" v-if="selectedProvider === 'bing'">
       <label for="bingApiKey">API Key</label>
-      <input type="text" name="apiKey" v-model="bing.apiKey" />
+      <input type="text" name="apiKey" v-model="bing.apiKey" :style="{'border-color': currentTextColor, 'color': currentTextColor}" />
     </div>
     <div class="flex flex-column" v-else-if="selectedProvider === 'google'">
       <label for="googleCseId">Custom Search Engine ID</label>
-      <input type="text" name="googleCseId" v-model="google.cseId" />
+      <input type="text" name="googleCseId" v-model="google.cseId" :style="{'border-color': currentTextColor, 'color': currentTextColor}" />
       <label for="googleApiKey">API Key</label>
-      <input type="text" name="googleApiKey" v-model="google.apiKey" />
+      <input type="text" name="googleApiKey" v-model="google.apiKey" :style="{'border-color': currentTextColor, 'color': currentTextColor}" />
     </div>
     <button @click="save()">save</button>
     <p>{{response}}</p>
@@ -20,7 +28,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 import { validateSubscriptionKey } from '@/common/bing';
 
 export default {
@@ -41,6 +49,10 @@ export default {
     response: '',
   }),
   computed: {
+    ...mapGetters([
+      'currentTextColor',
+      'currentBackgroundColor',
+    ]),
     bingApiKey() {
       return this.$store.state.api.providers.bing.apiKey;
     },
@@ -89,7 +101,21 @@ export default {
 </script>
 
 <style scoped>
-.selected {
+button {
+  padding: 0.5rem;
+  border: none;
+  border-width: 4px;
+
+}
+
+button.selected {
   background-color: red;
 }
+
+input {
+  padding: 0.5rem;
+  background: none;
+  border: 4px solid;
+}
+
 </style>
