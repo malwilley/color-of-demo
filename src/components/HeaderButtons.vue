@@ -1,6 +1,6 @@
 <template>
   <ul class="list-reset flex">
-    <router-link tag="li" v-for="button in pageButtons" v-bind:key="button.name" v-bind:to="button.url" class="btn p1 mx1 link" exact>{{ button.name }}</router-link>
+    <button-page tag="li" v-for="button in pageButtons" :key="button.name" :text="button.name" :url="button.url" exact></button-page>
     <li v-for="button in linkButtons" v-bind:key="button.name" class="btn p1 mx1">
       <a v-bind:href="button.url" class="link" target="_blank">{{ button.name }}</a>
     </li>
@@ -8,8 +8,13 @@
 </template>
 
 <script>
+import ButtonPage from './ButtonPage';
+
 export default {
   name: 'header-buttons',
+  components: {
+    ButtonPage,
+  },
   data() {
     return {
       pageButtons: [
@@ -41,10 +46,5 @@ export default {
 <style scoped>
   .link { 
     text-decoration: unset; 
-  }
-
-  .router-link-active {
-    border-bottom-width: 4px;
-    border-bottom-style: solid; 
   }
 </style>
