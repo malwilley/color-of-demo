@@ -30,3 +30,13 @@ export const colorize = async ({ commit, state }, query) => {
   commit(types.SET_SECONDARY_COLOR, scheme[0].substr(0, 7));
   commit(types.SET_TERTIARY_COLOR, scheme[1].substr(0, 7));
 };
+
+export const startBubbleAnimation = ({ commit, getters }, { x, y }) => {
+  commit(types.SET_BUBBLE_INFORMATION, { x, y, color: getters.currentPageColor });
+  commit(types.SET_BUBBLE_ANIMATING, true);
+};
+
+export const bubbleDoneAnimating = ({ commit, getters }) => {
+  commit(types.SET_BUBBLE_ANIMATING, false);
+  commit(types.SET_BACKGROUND_COLOR, getters.currentPageColor);
+};

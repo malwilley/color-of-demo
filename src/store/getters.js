@@ -10,7 +10,14 @@ export const currentRoute = state => state.route.path;
 
 export const currentPalette = state => state.palette.colors;
 
-export const currentBackgroundColor = (state, getters) => {
+export const bubblePosX = state => state.bubble.posX;
+export const bubblePosY = state => state.bubble.posY;
+export const bubbleColor = state => state.bubble.color;
+export const bubbleAnimating = state => state.bubble.animating;
+
+export const currentBackgroundColor = state => state.colors.background;
+
+export const currentPageColor = (state, getters) => {
   switch (getters.currentRoute) {
     case '/':
       return state.colors.primary;

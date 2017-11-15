@@ -29,4 +29,15 @@ export default {
       state.api.google.cseId = credentials.cseId;
     }
   },
+  [types.SET_BUBBLE_INFORMATION]: (state, { x, y, color }) => {
+    state.bubble.posX = x;
+    state.bubble.posY = y;
+    state.bubble.color = color;
+  },
+  [types.SET_BUBBLE_ANIMATING]: (state, isAnimating) => {
+    state.bubble.animating = isAnimating;
+  },
+  [types.SET_BACKGROUND_COLOR]: (state, color) => {
+    state.colors.background = color;
+  },
 };

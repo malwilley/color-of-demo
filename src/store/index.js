@@ -11,6 +11,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     colors: {
+      background: '#FFFFFF',
       primary: '#FFFFFF',
       secondary: '#FF0000',
       tertiary: '#000000',
@@ -34,6 +35,12 @@ export default new Vuex.Store({
     },
     palette: {
       colors: getDefaultPalettes()[0],
+    },
+    bubble: {
+      posX: 0,
+      posY: 0,
+      color: '#FFFFFF',
+      animating: false,
     },
   },
   getters,

@@ -1,15 +1,28 @@
 <template>
-    <router-link :to="url" class="btn p1 mx1 link" exact>
+    <router-link :to="url" @click.native="clickLink" class="btn p1 mx1 link relative" exact>
       {{ text }}
     </router-link>
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
 export default {
   name: 'button-page',
   props: {
     text: String,
     url: String,
+  },
+  methods: {
+    ...mapActions([
+      'startBubbleAnimation',
+    ]),
+    clickLink(e) {
+      const x = e.screenX;
+      const y = e.screenY;
+
+      this.startBubbleAnimation({ x, y });
+    },
   },
 };
 </script>

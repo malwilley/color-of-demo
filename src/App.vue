@@ -7,6 +7,7 @@
       <header-bar />
       <router-view />
     </div>
+    <color-bubble />
   </div>
 </template>
 
@@ -16,6 +17,7 @@ import HeaderBar from './components/HeaderBar';
 import Search from './components/Search';
 import MenuApi from './components/MenuApi';
 import MenuPalette from './components/MenuPalette';
+import ColorBubble from './components/ColorBubble';
 
 export default {
   name: 'app',
@@ -24,6 +26,7 @@ export default {
     Search,
     MenuApi,
     MenuPalette,
+    ColorBubble,
   },
   computed: {
     ...mapGetters([
@@ -45,11 +48,13 @@ body {
   display: flex;
   justify-content: center;
   align-items: stretch;
+  z-index: -1000;
 }
 
 #background {
-  transition: background-color 300ms ease-out;
+  /*transition: background-color 300ms ease-out;*/
   overflow: auto;
+  z-index: -100;
 }
 
 #app {
