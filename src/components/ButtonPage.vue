@@ -18,8 +18,8 @@ export default {
       'startBubbleAnimation',
     ]),
     clickLink(e) {
-      const x = e.screenX;
-      const y = e.screenY;
+      const x = e.clientX;
+      const y = e.clientY;
 
       this.startBubbleAnimation({ x, y });
     },

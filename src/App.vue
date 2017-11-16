@@ -3,11 +3,13 @@
     id="background"
     class="flex flex-auto flex-column items-center" 
     :style="{ 'background-color': currentBackgroundColor, 'color': currentTextColor, 'border-color': currentTextColor }">
+    <div class="fit-screen">
+      <color-bubble />
+    </div>
     <div id="app" class="flex flex-column flex-auto">
       <header-bar />
       <router-view />
     </div>
-    <color-bubble />
   </div>
 </template>
 
@@ -65,8 +67,14 @@ body {
   max-width: 1200px;
 }
 
-.btn {
-  cursor: pointer;
+.fit-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -10;
 }
 
 .thick-underline {

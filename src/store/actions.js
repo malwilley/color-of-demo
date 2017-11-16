@@ -36,7 +36,7 @@ export const startBubbleAnimation = ({ commit, getters }, { x, y }) => {
   commit(types.SET_BUBBLE_ANIMATING, true);
 };
 
-export const bubbleDoneAnimating = ({ commit, getters }) => {
-  commit(types.SET_BUBBLE_ANIMATING, false);
+export const bubbleDoneAnimating = async ({ commit, getters }) => {
   commit(types.SET_BACKGROUND_COLOR, getters.currentPageColor);
+  commit(types.SET_BUBBLE_ANIMATING, false);
 };

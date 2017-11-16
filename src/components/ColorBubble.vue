@@ -2,7 +2,7 @@
     <div 
       class="color-bubble" 
       :class="{'bubble--animate': bubbleAnimating}" 
-      :style="{left: bubblePosX, top: bubblePosY, backgroundColor: bubbleColor}"
+      :style="{left: pxFromLeft, top: pxFromTop, backgroundColor: bubbleColor}"
       @animationend="bubbleDoneAnimating" >
     </div>
 </template>
@@ -19,6 +19,12 @@ export default {
       'bubbleColor',
       'bubbleAnimating',
     ]),
+    pxFromLeft() {
+      return `${this.bubblePosX - 500}px`;
+    },
+    pxFromTop() {
+      return `${this.bubblePosY - 500}px`;
+    },
   },
   methods: {
     ...mapActions([
@@ -41,6 +47,7 @@ export default {
 
   .bubble--animate {
     animation: bubbleout 600ms ease-in-out;
+    transform: scale(3,3);
   }
 
   @keyframes bubbleout {
