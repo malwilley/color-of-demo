@@ -3,26 +3,28 @@
     <div class="flex">
       <button 
         @click="setSelectedProvider('bing')" 
-        :class="{ 'color': currentTextColor, 'background-color': isSelected('bing') ? currentBackgroundColor : 'none'  }">
+        class="btn-api text"
+        :class="{ 'selected': isSelected('bing') }">
         bing
       </button>
       <button
-        @click="setSelectedProvider('google')" 
-        :style="{ 'color': currentTextColor, 'background-color': isSelected('google') ? currentBackgroundColor : 'none' }" >
+        @click="setSelectedProvider('google')"
+        class="btn-api text"
+        :class="{ 'selected': isSelected('google') }" >
         google
       </button>
     </div>
     <div class="flex flex-column" v-if="selectedProvider === 'bing'">
-      <label for="bingApiKey">API Key</label>
-      <input type="text" name="apiKey" v-model="bing.apiKey" :style="{'border-color': currentTextColor, 'color': currentTextColor}" />
+      <label for="bingApiKey" class="text">API Key</label>
+      <input type="text" name="apiKey" class="text" v-model="bing.apiKey"/>
     </div>
     <div class="flex flex-column" v-else-if="selectedProvider === 'google'">
-      <label for="googleCseId">Custom Search Engine ID</label>
-      <input type="text" name="googleCseId" v-model="google.cseId" :style="{'border-color': currentTextColor, 'color': currentTextColor}" />
-      <label for="googleApiKey">API Key</label>
-      <input type="text" name="googleApiKey" v-model="google.apiKey" :style="{'border-color': currentTextColor, 'color': currentTextColor}" />
+      <label for="googleCseId" class="text">Custom Search Engine ID</label>
+      <input type="text" name="googleCseId" class="text" v-model="google.cseId" />
+      <label for="googleApiKey" class="text">API Key</label>
+      <input type="text" name="googleApiKey" class="text" v-model="google.apiKey"/>
     </div>
-    <button @click="save()">save</button>
+    <button class="btn-api selected text" @click="save()">save</button>
     <p>{{response}}</p>
   </div>
 </template>
@@ -101,15 +103,17 @@ export default {
 </script>
 
 <style scoped>
-button {
+.btn-api {
   padding: 0.5rem;
   border: none;
-  border-width: 4px;
-
+  border: 4px solid white;
+  background-color: transparent;
+  color: white;
 }
 
-button.selected {
-  background-color: red;
+.selected {
+  background-color: white;
+  color: black;
 }
 
 input {

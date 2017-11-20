@@ -2,7 +2,7 @@
   <div 
     id="background"
     class="flex flex-auto flex-column items-center" 
-    :style="{ 'background-color': currentBackgroundColor, 'color': currentTextColor, 'border-color': currentTextColor }">
+    :style="{ 'background-color': currentBackgroundColor }">
     <div class="fit-screen">
       <color-bubble />
     </div>
@@ -54,9 +54,9 @@ body {
 }
 
 #background {
-  /*transition: background-color 300ms ease-out;*/
   overflow: auto;
   z-index: -100;
+  mix-blend-mode: exclusion;
 }
 
 #app {
@@ -67,6 +67,12 @@ body {
   max-width: 1200px;
 }
 
+.text {
+  mix-blend-mode: exclusion;
+  color: white;
+  border-color: white;
+}
+
 .fit-screen {
   position: absolute;
   top: 0;
@@ -74,16 +80,11 @@ body {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  z-index: -10;
 }
 
 .thick-underline {
   border-bottom-width: 4px;
   border-bottom-style: solid;
-}
-
-a:visited {
-  color: inherit;
 }
 
 </style>

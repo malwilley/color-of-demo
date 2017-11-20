@@ -1,6 +1,6 @@
 <template>
     <header class="flex flex-none justify-between items-center bg-black">
-        <h1 class="pl2">color-of</h1>
+        <h1 class="text pl2">color-of</h1>
         <header-buttons />
     </header>
 </template>

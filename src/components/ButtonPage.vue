@@ -1,5 +1,5 @@
 <template>
-    <router-link :to="url" @click.native="clickLink" class="btn p1 mx1 link relative" exact>
+    <router-link :to="url" @click.native="clickLink" class="btn p1 mx1 link relative text" exact>
       {{ text }}
     </router-link>
 </template>

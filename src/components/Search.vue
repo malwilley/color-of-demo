@@ -1,13 +1,12 @@
 <template>
-  <section class="flex flex-auto flex-column justify-center items-center">
+  <section class="flex flex-auto justify-center items-center">
     <input
       contenteditable="true" 
-      class="thick-underline center p2 m2 h2" 
-      :style="{ 'border-color': currentTextColor, 'color': currentTextColor }"
+      class="text thick-underline center p2 m2 h2"
       type="text" 
       v-model="searchQuery"
      />
-    <button @click="colorize(searchQuery)">colorize</button>
+    <div class="colorize-btn" @click="colorize(searchQuery)"></div>
   </section>
 </template>
 
@@ -49,5 +48,15 @@ input {
 }
 input:focus {
   outline: 0;
+}
+.colorize-btn {
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+  border: 6px solid white;
+  mix-blend-mode: exclusion;
+}
+.colorize-btn:hover {
+  background-color: white;
 }
 </style>
