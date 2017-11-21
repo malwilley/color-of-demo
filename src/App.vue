@@ -6,7 +6,7 @@
     <div class="fit-screen">
       <color-bubble />
     </div>
-    <div id="app" class="flex flex-column flex-auto">
+    <div id="app" class="flex flex-column  flex-auto">
       <header-bar />
       <router-view />
     </div>
@@ -40,8 +40,19 @@ export default {
 </script>
 
 <style>
-@import "../node_modules/normalize.css/normalize.css";
-@import "../node_modules/basscss/css/basscss.css";
+@import '../node_modules/normalize.css/normalize.css';
+@import '../node_modules/basscss/css/basscss.css';
+
+@font-face {
+  font-family: 'Roboto Mono';
+  src: url('https://fonts.googleapis.com/css?family=Roboto+Mono:700');
+}
+
+:root {
+  --active: white;
+  --inactive: gray;
+  --none: black;
+}
 
 body {
   position: absolute;
@@ -60,7 +71,7 @@ body {
 }
 
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: 'Roboto Mono', monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   width: 100%;
@@ -85,6 +96,57 @@ body {
 .thick-underline {
   border-bottom-width: 4px;
   border-bottom-style: solid;
+}
+
+/* inputs */
+
+label {
+  color: var(--active);
+  mix-blend-mode: exclusion;
+}
+
+input[type="text"] {
+  font-family: 'Roboto Mono', monospace;
+  background-color: transparent;
+  border: 4px solid var(--inactive);
+  color: var(--inactive);
+  padding: 10px 14px;
+  border-radius: 6px 6px;
+  mix-blend-mode: exclusion;
+  font-size: 15px;
+  transition: border 250ms linear, color 250ms linear;
+}
+
+input[type="text"]:focus {
+  border-color: var(--active);
+  color: var(--active);
+}
+
+.btn {
+  font-family: 'Roboto Mono', monospace;
+  cursor: pointer;
+  background-color: var(--inactive);
+  border-radius: 4px;
+  padding: 6px 8px;
+  border: none;
+  transition: background-color 250ms linear;
+  color: var(--none);
+  mix-blend-mode: exclusion;
+}
+
+.btn:hover {
+  background-color: var(--active);
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+[contenteditable="true"]:focus {
+    outline: none;
 }
 
 </style>

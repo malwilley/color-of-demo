@@ -13,7 +13,7 @@ export default new Vuex.Store({
     colors: {
       background: '#FFFFFF',
       primary: '#FFFFFF',
-      secondary: '#FF0000',
+      secondary: '#3F51B5',
       tertiary: '#000000',
     },
     search: {

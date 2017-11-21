@@ -1,7 +1,7 @@
 <template>
   <ul class="list-reset flex">
     <button-page tag="li" v-for="button in pageButtons" :key="button.name" :text="button.name" :url="button.url" exact></button-page>
-    <li v-for="button in linkButtons" v-bind:key="button.name" class="btn p1 mx1">
+    <li v-for="button in linkButtons" v-bind:key="button.name" class="p1 mx1">
       <a v-bind:href="button.url" class="link text" target="_blank">{{ button.name }}</a>
     </li>
   </ul>

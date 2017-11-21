@@ -41,7 +41,9 @@ input {
   border-left: none;
   border-top: none;
   border-right: none;
-  width: auto;
+  border-radius: 0px;
+  width: 100%;
+  max-width: 300px;
   box-shadow: none;
   background-color: none;
   background-image:none;
