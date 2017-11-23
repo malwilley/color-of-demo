@@ -34,7 +34,8 @@ export default new Vuex.Store({
       },
     },
     palette: {
-      colors: getDefaultPalettes()[0],
+      selected: 'MATERIAL',
+      options: getDefaultPalettes(),
     },
     bubble: {
       posX: 0,

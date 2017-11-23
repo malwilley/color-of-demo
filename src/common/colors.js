@@ -20,9 +20,5 @@ export function calculateTextColor(backgroundColorHex) {
  * @returns {string[][]} The default palette hex/name arrays
  */
 export function getDefaultPalettes() {
-  return [
-    PALETTES.MATERIAL,
-    PALETTES.W3C,
-    PALETTES.CSS,
-  ];
+  return PALETTES;
 }

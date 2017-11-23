@@ -8,7 +8,9 @@ export const currentSearchTerm = state => state.search.term;
 
 export const currentRoute = state => state.route.path;
 
-export const currentPalette = state => state.palette.colors;
+export const selectedPalette = state => state.palette.selected;
+export const paletteOptions = state => Object.keys(state.palette.options);
+export const paletteColors = state => state.palette.options[state.palette.selected];
 
 export const bubblePosX = state => state.bubble.posX;
 export const bubblePosY = state => state.bubble.posY;

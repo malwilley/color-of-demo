@@ -1,23 +1,47 @@
 <template>
-  <ul class="flex-auto flex flex-column items-stretch list-reset">
-    <li v-for="color in currentPalette" v-bind:key="color" class="p2" v-bind:style="{ 'background': color, 'color': textColor(color) }">
-      {{ color.toUpperCase() }}
-    </li>
-  </ul>
+  <div class="p1">
+    <div class="flat-select">
+      <select v-model="selectedDropdownItem">
+        <option v-for="option in paletteOptions" :key="option" :value="option">{{option}}</option>
+      </select>
+    </div>
+    <ul class="flex-auto flex flex-column items-stretch list-reset">
+      <li v-for="color in paletteColors" :key="color" class="p2" v-bind:style="{ 'background': color, 'color': textColor(color) }">
+        {{ color.toUpperCase() }}
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 import { calculateTextColor } from '@/common/colors';
 
 export default {
   name: 'menu-palette',
   computed: {
     ...mapGetters([
-      'currentPalette',
+      'paletteColors',
+      'paletteOptions',
+      'selectedPalette',
     ]),
+    selectedDropdownItem: {
+      get() {
+        return this.selectedPalette;
+      },
+      set(value) {
+        this.setSelectedPalette(value);
+      },
+    },
   },
   methods: {
+    ...mapActions([
+      'setSelectedPalette',
+    ]),
+    onSelectedPaletteChange(e) {
+      console.log(e);
+      this.setSelectedPalette(e);
+    },
     textColor(backgroundColor) {
       return calculateTextColor(backgroundColor);
     },
@@ -26,5 +50,40 @@ export default {
 </script>
 
 <style scoped>
+.flat-select {
+  position: relative;
+  mix-blend-mode: exclusion;
+  border: 4px solid white;
+  background-color: white;
+  color: white;
+  width: 140px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.flat-select::before {
+  position: absolute;
+  content: '▼';
+  color: black;
+  z-index: -1;
+  right: 8px;
+  top: 2px;
+}
+
+.flat-select select {
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 700;
+  padding: 5px 8px;
+  width: 130%;
+  border: none;
+  box-shadow: none;
+  background: transparent;
+  background-image: none;
+  -webkit-appearance: none;
+}
+
+.flat-select select:focus {
+  outline: none;
+}
 
 </style>

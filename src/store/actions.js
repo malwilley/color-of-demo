@@ -16,6 +16,10 @@ export const setGoogleCredentials = ({ commit }, credentials) => {
   commit(types.SET_GOOGLE_CREDENTIALS, credentials);
 };
 
+export const setSelectedPalette = ({ commit }, paletteName) => {
+  commit(types.SET_SELECTED_PALETTE, paletteName);
+};
+
 export const colorize = async ({ commit, state }, query) => {
   const colorOf = state.api.selectedProvider === 'bing' ?
     curry(bingColorOf)(state.api.providers.bing.apiKey) :

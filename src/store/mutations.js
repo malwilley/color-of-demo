@@ -29,6 +29,9 @@ export default {
       state.api.google.cseId = credentials.cseId;
     }
   },
+  [types.SET_SELECTED_PALETTE]: (state, paletteName) => {
+    state.palette.selected = paletteName;
+  },
   [types.SET_BUBBLE_INFORMATION]: (state, { x, y, color }) => {
     state.bubble.posX = x;
     state.bubble.posY = y;

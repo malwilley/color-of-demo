@@ -68,7 +68,6 @@ body {
 
 #background {
   overflow: auto;
-  z-index: -100;
   mix-blend-mode: exclusion;
 }
 
