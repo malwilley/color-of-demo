@@ -8,7 +8,9 @@
     </div>
     <div id="app" class="flex flex-column  flex-auto">
       <header-bar />
-      <router-view />
+      <transition name="slide" mode="out-in">
+        <router-view />
+      </transition>
     </div>
   </div>
 </template>
@@ -72,13 +74,16 @@ body {
 
 #app {
   font-family: 'Roboto Mono', monospace;
+  font-weight: 700;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  -moz-osx-font-smoothing: graysfadecale;
   width: 100%;
   max-width: 1200px;
 }
 
 .text {
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 700;
   mix-blend-mode: exclusion;
   color: white;
   border-color: white;
@@ -103,6 +108,7 @@ body {
 label {
   color: var(--active);
   mix-blend-mode: exclusion;
+  margin-bottom: 0.5rem;
 }
 
 input[type="text"] {
@@ -124,10 +130,11 @@ input[type="text"]:focus {
 
 .btn {
   font-family: 'Roboto Mono', monospace;
+  font-weight: 700;
   cursor: pointer;
   background-color: var(--inactive);
   border-radius: 4px;
-  padding: 6px 8px;
+  padding: 10px 12px;
   border: none;
   transition: background-color 250ms linear;
   color: var(--none);
@@ -147,6 +154,26 @@ button:focus {
 
 [contenteditable="true"]:focus {
     outline: none;
+}
+
+/* animations */
+
+.slide-enter-active {
+  animation: slide-out 200ms reverse;
+}
+.slide-leave-active {
+  animation: slide-out 100ms;
+}
+
+@keyframes slide-out {
+  from {
+    transform: none;
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
 }
 
 </style>

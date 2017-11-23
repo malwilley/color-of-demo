@@ -4,13 +4,13 @@
       <div class="flex mb2 self-center">
         <button 
           @click="setSelectedProvider('bing')" 
-          class="switch switch-left"
+          class="switch switch-left text"
           :class="{ 'active': isSelected('bing') }">
           bing
         </button>
         <button
           @click="setSelectedProvider('google')"
-          class="switch switch-right"
+          class="switch switch-right text"
           :class="{ 'active': isSelected('google') }" >
           google
         </button>
@@ -113,7 +113,6 @@ export default {
 .switch {
   cursor: pointer;
   padding: 6px 8px;
-  mix-blend-mode: exclusion;
   color: var(--active);
   border: 4px solid var(--active);
   background-color: var(--none);

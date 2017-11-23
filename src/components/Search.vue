@@ -47,6 +47,7 @@ input {
   box-shadow: none;
   background-color: none;
   background-image:none;
+  font-size: 24px;
 }
 input:focus {
   outline: 0;

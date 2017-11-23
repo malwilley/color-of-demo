@@ -29,11 +29,18 @@ export default {
 
 <style scoped>
   .link { 
-    text-decoration: unset; 
+    text-decoration: unset;
+    color: var(--inactive);
+    transition: color 250ms linear;
+  }
+
+  .link:hover {
+    color: var(--active);
   }
 
   .router-link-active {
     border-bottom-width: 4px;
     border-bottom-style: solid; 
+    color: var(--active);
   }
 </style>
