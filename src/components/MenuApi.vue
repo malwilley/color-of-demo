@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-center items-center">
+  <div class="flex justify-center items-center p1">
     <div class="flex flex-column api-container">
       <div class="flex mb2 self-center">
         <button 

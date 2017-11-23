@@ -95,6 +95,7 @@ body {
   width: 100%;
   height: 100%;
   overflow: hidden;
+  pointer-events: none;
 }
 
 .thick-underline {
@@ -158,10 +159,10 @@ button:focus {
 /* animations */
 
 .slide-enter-active {
-  animation: slide-out 200ms reverse;
+  animation: slide-out 100ms reverse;
 }
 .slide-leave-active {
-  animation: slide-out 100ms;
+  animation: slide-out 250ms;
 }
 
 @keyframes slide-out {
