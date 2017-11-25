@@ -38,7 +38,7 @@ import { validateSubscriptionKey } from '@/common/bing';
 export default {
   name: 'menu-api',
   mounted() {
-    this.bing.apiKey = this.apiKey;
+    this.bing.apiKey = this.bingApiKey;
     this.google.cseId = this.googleCseId;
     this.google.apiKey = this.googleApiKey;
   },

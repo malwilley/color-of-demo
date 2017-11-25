@@ -25,8 +25,8 @@ export default {
   },
   [types.SET_GOOGLE_CREDENTIALS]: (state, credentials) => {
     if (credentials.apiKey && credentials.cseId) {
-      state.api.google.apiKey = credentials.apiKey;
-      state.api.google.cseId = credentials.cseId;
+      state.api.providers.google.apiKey = credentials.apiKey;
+      state.api.providers.google.cseId = credentials.cseId;
     }
   },
   [types.SET_SELECTED_PALETTE]: (state, paletteName) => {
