@@ -18,6 +18,9 @@ export default new Vuex.Store({
     },
     search: {
       term: '',
+      state: {
+        type: 'not_asked', // not_asked/fetching/success/error
+      },
     },
     api: {
       selectedProvider: 'bing',

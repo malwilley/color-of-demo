@@ -5,6 +5,10 @@ export const apiIsValid = state => state.api.providers[state.api.selectedProvide
 export const currentAppColor = state => state.colors.primary;
 
 export const currentSearchTerm = state => state.search.term;
+/* eslint-disable no-confusing-arrow */
+export const colorHex = state => state.search.state.hex ? state.search.state.hex : '';
+export const colorIsFetching = state => state.search.state.type === 'fetching';
+export const colorFetchError = state => state.search.state.error;
 
 export const currentRoute = state => state.route.path;
 

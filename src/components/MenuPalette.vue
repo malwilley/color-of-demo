@@ -1,6 +1,6 @@
 <template>
   <div class="p1">
-    <div class="flat-select">
+    <div class="flat-select ml-auto mr-auto">
       <select v-model="selectedDropdownItem">
         <option v-for="option in paletteOptions" :key="option" :value="option">{{option}}</option>
       </select>
@@ -53,6 +53,7 @@ export default {
   background-color: white;
   color: white;
   width: 140px;
+  height: 25px;
   border-radius: 6px;
   overflow: hidden;
 }

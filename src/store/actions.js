@@ -20,20 +20,35 @@ export const setSelectedPalette = ({ commit }, paletteName) => {
   commit(types.SET_SELECTED_PALETTE, paletteName);
 };
 
-export const colorize = async ({ commit, state }, query) => {
-  const colorOf = state.api.selectedProvider === 'bing' ?
-    curry(bingColorOf)(state.api.providers.bing.apiKey) :
-    curry(googleColorOf)(state.api.providers.google.cseId, state.api.providers.google.apiKey);
-  const color = await colorOf(query);
-  commit(types.SET_SEARCH_TERM, query);
-  commit(types.SET_APP_COLOR, color.hex());
-  commit(types.SET_BACKGROUND_COLOR, color.hex());
-  const scheme = Please.make_scheme(color.hsv().object(), {
-    scheme_type: 'analogous',
-    format: 'hex',
-  });
-  commit(types.SET_SECONDARY_COLOR, scheme[0].substr(0, 7));
-  commit(types.SET_TERTIARY_COLOR, scheme[1].substr(0, 7));
+export const colorize = async ({ commit, state, getters }, query) => {
+  const colorOf = state.api.selectedProvider === 'bing'
+    ? curry(bingColorOf)(
+        state.api.providers.bing.apiKey,
+        getters.selectedPalette)
+    : curry(googleColorOf)(
+        state.api.providers.google.cseId,
+        state.api.providers.google.apiKey,
+        getters.selectedPalette);
+
+  commit(types.SET_SEARCH_STATE, { type: 'fetching' });
+
+  try {
+    const color = await colorOf(query);
+
+    commit(types.SET_SEARCH_TERM, query);
+    commit(types.SET_APP_COLOR, color.hex());
+    commit(types.SET_BACKGROUND_COLOR, color.hex());
+    const scheme = Please.make_scheme(color.hsv().object(), {
+      scheme_type: 'monochromatic',
+      format: 'hex',
+    });
+    commit(types.SET_SECONDARY_COLOR, scheme[0].substr(0, 7));
+    commit(types.SET_TERTIARY_COLOR, scheme[1].substr(0, 7));
+
+    commit(types.SET_SEARCH_STATE, { type: 'success', hex: color.hex() });
+  } catch (e) {
+    commit(types.SET_SEARCH_STATE, { type: 'error', error: e.message });
+  }
 };
 
 export const startBubbleAnimation = ({ commit, getters }, { x, y }) => {

@@ -43,4 +43,7 @@ export default {
   [types.SET_BACKGROUND_COLOR]: (state, color) => {
     state.colors.background = color;
   },
+  [types.SET_SEARCH_STATE]: (state, searchState) => {
+    state.search.state = searchState;
+  },
 };

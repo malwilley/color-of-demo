@@ -26,12 +26,12 @@ export async function validateSubscriptionKey(key) {
   }
 }
 
-export function colorize(apiKey, query) {
+export function colorize(apiKey, palette, query) {
   const options = {
     query,
     bingApiKey: apiKey,
     numResults: 50,
-    palette: 'css',
+    palette,
   };
   return colorOf(query, options);
 }

@@ -6,7 +6,7 @@
       type="text" 
       v-model="searchQuery"
      />
-    <div class="colorize-btn" @click="colorize(searchQuery)"></div>
+    <div class="colorize-btn" :class="{ 'pulse--animate': colorIsFetching }" @click="colorize(searchQuery)"></div>
   </section>
 </template>
 
@@ -25,6 +25,7 @@ export default {
     ...mapGetters([
       'currentSearchTerm',
       'currentTextColor',
+      'colorIsFetching',
     ]),
   },
   methods: {
@@ -49,17 +50,41 @@ input {
   background-image:none;
   font-size: 24px;
 }
+
 input:focus {
   outline: 0;
 }
+
 .colorize-btn {
   cursor: pointer;
-  width: 16px;
-  height: 16px;
-  border: 6px solid white;
+  background-color: var(--active);
   mix-blend-mode: exclusion;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  transition: background-color 100ms linear, transform 200ms linear;
 }
+
 .colorize-btn:hover {
-  background-color: white;
+  transform: scale(1.2);
+}
+
+.pulse--animate {
+  animation: colorpulse 1s infinite;
+}
+
+@keyframes colorpulse {
+  0% {
+    background-color: white;
+    transform: scale(1.2);
+  }
+  50% {
+    background-color: black;
+    transform: scale(1.0);
+  }
+  100% {
+    background-color: white;
+    transform: scale(1.2);
+  }
 }
 </style>
