@@ -38,10 +38,6 @@ export default {
     ...mapActions([
       'setSelectedPalette',
     ]),
-    onSelectedPaletteChange(e) {
-      console.log(e);
-      this.setSelectedPalette(e);
-    },
     textColor(backgroundColor) {
       return calculateTextColor(backgroundColor);
     },

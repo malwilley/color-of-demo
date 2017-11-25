@@ -27,6 +27,7 @@ export const colorize = async ({ commit, state }, query) => {
   const color = await colorOf(query);
   commit(types.SET_SEARCH_TERM, query);
   commit(types.SET_APP_COLOR, color.hex());
+  commit(types.SET_BACKGROUND_COLOR, color.hex());
   const scheme = Please.make_scheme(color.hsv().object(), {
     scheme_type: 'analogous',
     format: 'hex',
